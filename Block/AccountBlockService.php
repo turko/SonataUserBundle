@@ -18,6 +18,7 @@ use Sonata\UserBundle\Model\UserInterface;
 use Symfony\Bundle\FrameworkBundle\Templating\EngineInterface;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
 use Symfony\Component\Security\Core\SecurityContextInterface;
 
 /**
@@ -40,13 +41,13 @@ class AccountBlockService extends BaseBlockService
      *
      * @param string                   $name
      * @param EngineInterface          $templating
-     * @param SecurityContextInterface $securityContext
+     * @param TokenStorageInterface $tokenStorage
      */
-    public function __construct($name, EngineInterface $templating, SecurityContextInterface $securityContext)
+    public function __construct($name, EngineInterface $templating, TokenStorageInterface $tokenStorage)
     {
         parent::__construct($name, $templating);
 
-        $this->securityContext = $securityContext;
+        $this->securityContext = $tokenStorage;
     }
 
     /**

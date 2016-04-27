@@ -81,7 +81,8 @@ class ProfileFOSUser1Controller extends Controller
             throw $this->createAccessDeniedException('This user does not have access to this section.');
         }
 
-        $form = $this->get('sonata.user.profile.form');
+        /** @var $formFactory \FOS\UserBundle\Form\Factory\FactoryInterface */
+        $form = $this->get('sonata.user.profile.form')->createForm();
         $formHandler = $this->get('sonata.user.profile.form.handler');
 
         $process = $formHandler->process($user);

@@ -13,14 +13,16 @@
 namespace Sonata\UserBundle\Security;
 
 use Sonata\AdminBundle\Admin\Pool;
-use Symfony\Component\Security\Core\SecurityContextInterface;
+use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
+use Symfony\Component\Security\Core\Authorization\AuthorizationCheckerInterface;
+use Symfony\Component\Security\Http\Firewall\ContextListener;
 
 class EditableRolesBuilder
 {
     /**
-     * @var SecurityContextInterface
+     * @var TokenStorageInterface
      */
-    protected $securityContext;
+    protected $tokenStorage;
 
     /**
      * @var Pool
@@ -33,13 +35,20 @@ class EditableRolesBuilder
     protected $rolesHierarchy;
 
     /**
-     * @param SecurityContextInterface $securityContext
-     * @param Pool                     $pool
-     * @param array                    $rolesHierarchy
+     * @var AuthorizationCheckerInterface
      */
-    public function __construct(SecurityContextInterface $securityContext, Pool $pool, array $rolesHierarchy = array())
+    private $authorizationChecker;
+
+    /**
+     * @param ContextListener $tokenStorage
+     * @param AuthorizationCheckerInterface $authorizationChecker
+     * @param Pool $pool
+     * @param array $rolesHierarchy
+     */
+    public function __construct(TokenStorageInterface $tokenStorage, AuthorizationCheckerInterface $authorizationChecker, Pool $pool, array $rolesHierarchy = array())
     {
-        $this->securityContext = $securityContext;
+        $this->tokenStorage = $tokenStorage;
+        $this->authorizationChecker = $authorizationChecker;
         $this->pool = $pool;
         $this->rolesHierarchy = $rolesHierarchy;
     }
@@ -52,7 +61,7 @@ class EditableRolesBuilder
         $roles = array();
         $rolesReadOnly = array();
 
-        if (!$this->securityContext->getToken()) {
+        if (!$this->tokenStorage->getToken()) {
             return array($roles, $rolesReadOnly);
         }
 
@@ -79,18 +88,18 @@ class EditableRolesBuilder
                 if ($isMaster) {
                     // if the user has the MASTER permission, allow to grant access the admin roles to other users
                     $roles[$role] = $role;
-                } elseif ($this->securityContext->isGranted($role)) {
+                } elseif ($this->authorizationChecker->isGranted($role)) {
                     // although the user has no MASTER permission, allow the currently logged in user to view the role
                     $rolesReadOnly[$role] = $role;
                 }
             }
         }
 
-        $isMaster = $this->securityContext->isGranted('ROLE_SUPER_ADMIN');
+        $isMaster = $this->authorizationChecker->isGranted('ROLE_SUPER_ADMIN');
 
         // get roles from the service container
         foreach ($this->rolesHierarchy as $name => $rolesHierarchy) {
-            if ($this->securityContext->isGranted($name) || $isMaster) {
+            if ($this->authorizationChecker->isGranted($name) || $isMaster) {
                 $roles[$name] = $name.': '.implode(', ', $rolesHierarchy);
 
                 foreach ($rolesHierarchy as $role) {
