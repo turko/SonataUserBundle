@@ -16,6 +16,7 @@ use FOS\UserBundle\Model\UserInterface;
 use FOS\UserBundle\Model\UserManagerInterface;
 use Symfony\Component\Form\Form;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\RequestStack;
 
 /**
  * This file is an adapted version of FOS User Bundle ProfileFormHandler class.
@@ -25,7 +26,7 @@ use Symfony\Component\HttpFoundation\Request;
 class ProfileFormHandler
 {
     /**
-     * @var Request
+     * @var RequestStack
      */
     protected $request;
 
@@ -41,10 +42,10 @@ class ProfileFormHandler
 
     /**
      * @param Form                 $form
-     * @param Request              $request
+     * @param RequestStack              $request
      * @param UserManagerInterface $userManager
      */
-    public function __construct(Form $form, Request $request, UserManagerInterface $userManager)
+    public function __construct(Form $form, RequestStack $request, UserManagerInterface $userManager)
     {
         $this->form = $form;
         $this->request = $request;
