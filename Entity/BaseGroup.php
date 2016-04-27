@@ -1,4 +1,5 @@
 <?php
+
 /*
  * This file is part of the Sonata project.
  *
@@ -10,15 +11,15 @@
 
 namespace Sonata\UserBundle\Entity;
 
-use FOS\UserBundle\Entity\Group as AbstractedGroup;
+use FOS\UserBundle\Model\Group as AbstractedGroup;
 
 /**
- * Represents a Base Group Entity
+ * Represents a Base Group Entity.
  */
 class BaseGroup extends AbstractedGroup
 {
     /**
-     * Represents a string representation
+     * Represents a string representation.
      *
      * @return string
      */

@@ -2,9 +2,13 @@
 <xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
     <file source-language="en" datatype="plaintext" original="" >
         <body>
+            <trans-unit id="title_user_registration">
+                <source>title_user_registration</source>
+                <target>Registrierung</target>
+            </trans-unit>
             <trans-unit id="title_user_account">
                 <source>title_user_account</source>
-                <target>User Profile</target>
+                <target>Benutzerprofil</target>
             </trans-unit>
             <trans-unit id="title_user_edit_profile">
                 <source>title_user_edit_profile</source>
@@ -12,7 +16,7 @@
             </trans-unit>
             <trans-unit id="title_user_authentication">
                 <source>title_user_authentication</source>
-                <target>Authentication</target>
+                <target>Authentifizierung</target>
             </trans-unit>
             <trans-unit id="sonata_user_submit">
                 <source>sonata_user_submit</source>
@@ -30,6 +34,10 @@
                 <source>breadcrumb.link_user_edit</source>
                 <target>Bearbeiten</target>
             </trans-unit>
+            <trans-unit id="breadcrumb.link_user_delete">
+                <source>breadcrumb.link_user_delete</source>
+                <target>Benutzer löschen</target>
+            </trans-unit>
             <trans-unit id="breadcrumb.link_group_list">
                 <source>breadcrumb.link_group_list</source>
                 <target>Gruppen</target>
@@ -41,6 +49,10 @@
             <trans-unit id="breadcrumb.link_group_edit">
                 <source>breadcrumb.link_group_edit</source>
                 <target>Bearbeiten</target>
+            </trans-unit>
+            <trans-unit id="breadcrumb.link_group_delete">
+                <source>breadcrumb.link_group_delete</source>
+                <target>Gruppe löschen</target>
             </trans-unit>
             <trans-unit id="breadcrumb.link_user_show">
                 <source>breadcrumb.link_user_show</source>
@@ -57,6 +69,10 @@
             <trans-unit id="switch_user_exit">
                 <source>switch_user_exit</source>
                 <target>Benutzer imitieren beenden</target>
+            </trans-unit>
+            <trans-unit id="user_block_profile">
+                <source>user_block_profile</source>
+                <target>Profil</target>
             </trans-unit>
             <trans-unit id="switch_user">
                 <source>switch_user</source>
@@ -182,6 +198,14 @@
                 <source>field.label_roles_editable</source>
                 <target>Rollen</target>
             </trans-unit>
+            <trans-unit id="filter.label_username">
+                <source>filter.label_username</source>
+                <target>Benutzername</target>
+            </trans-unit>
+            <trans-unit id="filter.label_name">
+                <source>filter.label_name</source>
+                <target>Name</target>
+            </trans-unit>            
             <trans-unit id="filter.label_email">
                 <source>filter.label_email</source>
                 <target>E-Mail-Adresse</target>
@@ -202,6 +226,10 @@
                 <source>filter.label_locked</source>
                 <target>Gesperrt</target>
             </trans-unit>
+            <trans-unit id="filter.label_id">
+                <source>filter.label_id</source>
+                <target>ID</target>
+            </trans-unit>            
             <trans-unit id="filter.label_expired">
                 <source>filter.label_expired</source>
                 <target>Abgelaufen</target>
@@ -372,7 +400,7 @@
             </trans-unit>
             <trans-unit id="show.label_website">
                 <source>show.label_website</source>
-                <target>Wenseite</target>
+                <target>Webseite</target>
             </trans-unit>
             <trans-unit id="show.label_biography">
                 <source>show.label_biography</source>
@@ -396,27 +424,27 @@
             </trans-unit>
             <trans-unit id="show.label_facebook_uid">
                 <source>show.label_facebook_uid</source>
-                <target>Facebook Kennung</target>
+                <target>Facebook-Kennung</target>
             </trans-unit>
             <trans-unit id="show.label_facebook_name">
                 <source>show.label_facebook_name</source>
-                <target>Facebook Name</target>
+                <target>Facebook-Name</target>
             </trans-unit>
             <trans-unit id="show.label_twitter_uid">
                 <source>show.label_twitter_uid</source>
-                <target>Twitter Kennung</target>
+                <target>Twitter-Kennung</target>
             </trans-unit>
             <trans-unit id="show.label_twitter_name">
                 <source>show.label_twitter_name</source>
-                <target>Twitter Name</target>
+                <target>Twitter-Name</target>
             </trans-unit>
             <trans-unit id="show.label_gplus_uid">
                 <source>show.label_gplus_uid</source>
-                <target>Google+ Benutzerkennnung</target>
+                <target>Kennung bei Google+</target>
             </trans-unit>
             <trans-unit id="show.label_gplus_name">
                 <source>show.label_gplus_name</source>
-                <target>Google+ Name</target>
+                <target>Name bei Google+</target>
             </trans-unit>
             <trans-unit id="show.label_token">
                 <source>show.label_token</source>
@@ -424,11 +452,11 @@
             </trans-unit>
             <trans-unit id="show.label_two_step_verification_code">
                 <source>show.label_two_step_verification_code</source>
-                <target>Zwei-Schritte Bestätigung</target>
+                <target>Zwei-Schritte-Bestätigung</target>
             </trans-unit>
             <trans-unit id="gender_unknown">
                 <source>gender_unknown</source>
-                <target>Unbekannt</target>
+                <target>Keine Angabe</target>
             </trans-unit>
             <trans-unit id="gender_female">
                 <source>gender_female</source>
@@ -438,7 +466,6 @@
                 <source>gender_male</source>
                 <target>Männlich</target>
             </trans-unit>
-
             <trans-unit id="form.label_users">
                 <source>form.label_users</source>
                 <target>Benutzer</target>
@@ -473,95 +500,135 @@
             </trans-unit>
             <trans-unit id="sonata_profile_title">
                 <source>sonata_profile_title</source>
-                <target>sonata_profile_title</target>
+                <target>Profil</target>
             </trans-unit>
             <trans-unit id="link_show_profile">
                 <source>link_show_profile</source>
-                <target>link_show_profile</target>
+                <target>Profil</target>
             </trans-unit>
             <trans-unit id="link_edit_profile">
                 <source>link_edit_profile</source>
-                <target>link_edit_profile</target>
+                <target>Profil bearbeiten</target>
             </trans-unit>
             <trans-unit id="title_user_edit_authentication">
                 <source>title_user_edit_authentication</source>
-                <target>title_user_edit_authentication</target>
+                <target>Anmeldedaten bearbeiten</target>
             </trans-unit>
             <trans-unit id="link_edit_authentication">
                 <source>link_edit_authentication</source>
-                <target>link_edit_authentication</target>
+                <target>Anmeldedaten bearbeiten</target>
             </trans-unit>
             <trans-unit id="label_profile_gender">
                 <source>label_profile_gender</source>
-                <target>label_profile_gender</target>
+                <target>Geschlecht</target>
             </trans-unit>
             <trans-unit id="label_profile_firstname">
                 <source>label_profile_firstname</source>
-                <target>label_profile_firstname</target>
+                <target>Vorname</target>
             </trans-unit>
             <trans-unit id="label_profile_lastname">
                 <source>label_profile_lastname</source>
-                <target>label_profile_lastname</target>
+                <target>Nachname</target>
             </trans-unit>
             <trans-unit id="label_profile_website">
                 <source>label_profile_website</source>
-                <target>label_profile_website</target>
+                <target>Website</target>
             </trans-unit>
             <trans-unit id="label_profile_dob">
                 <source>label_profile_dob</source>
-                <target>label_profile_dob</target>
+                <target>Geburtsdatum</target>
             </trans-unit>
             <trans-unit id="label_profile_biography">
                 <source>label_profile_biography</source>
-                <target>label_profile_biography</target>
+                <target>Biographie</target>
             </trans-unit>
             <trans-unit id="label_profile_locale">
                 <source>label_profile_locale</source>
-                <target>label_profile_locale</target>
+                <target>Sprache</target>
             </trans-unit>
             <trans-unit id="label_profile_timezone">
                 <source>label_profile_timezone</source>
-                <target>label_profile_timezone</target>
+                <target>Zeitzone</target>
             </trans-unit>
             <trans-unit id="label_profile_phone">
                 <source>label_profile_phone</source>
-                <target>label_profile_phone</target>
+                <target>Telefon</target>
             </trans-unit>
             <trans-unit id="profile.flash.updated">
                 <source>profile.flash.updated</source>
-                <target>profile.flash.updated</target>
+                <target>Profil gespeichert</target>
             </trans-unit>
             <trans-unit id="sonata_change_password_link">
                 <source>sonata_change_password_link</source>
-                <target>sonata_change_password_link</target>
+                <target>Passwort ändern</target>
             </trans-unit>
             <trans-unit id="link_register">
                 <source>link_register</source>
-                <target>link_register</target>
+                <target>Registrieren</target>
             </trans-unit>
             <trans-unit id="link_login">
                 <source>link_login</source>
-                <target>link_login</target>
+                <target>Login</target>
             </trans-unit>
             <trans-unit id="link_logout">
                 <source>link_logout</source>
-                <target>link_logout</target>
+                <target>Logout</target>
             </trans-unit>
             <trans-unit id="registration.flash.user_created">
                 <source>registration.flash.user_created</source>
-                <target>registration.flash.user_created</target>
+                <target>Benutzer angelegt</target>
             </trans-unit>
             <trans-unit id="forgotten_password">
                 <source>forgotten_password</source>
-                <target>forgotten_password</target>
+                <target>Passwort vergessen</target>
             </trans-unit>
             <trans-unit id="sonata_user_profile_breadcrumb_index">
                 <source>sonata_user_profile_breadcrumb_index</source>
-                <target>sonata_user_profile_breadcrumb_index</target>
+                <target>Profil</target>
             </trans-unit>
             <trans-unit id="sonata_user_profile_breadcrumb_edit">
                 <source>sonata_user_profile_breadcrumb_edit</source>
-                <target>sonata_user_profile_breadcrumb_edit</target>
+                <target>bearbeiten</target>
+            </trans-unit>
+            <trans-unit id="sonata_user_already_authenticated">
+                <source>sonata_user_already_authenticated</source>
+                <target>Sie sind schon eingeloggt</target>
+            </trans-unit>
+            <trans-unit id="security.login.username">
+                <source>security.login.username</source>
+                <target>Benutzername</target>
+            </trans-unit>
+            <trans-unit id="security.login.password">
+                <source>security.login.password</source>
+                <target>Passwort</target>
+            </trans-unit>
+            <trans-unit id="form.username">
+                <source>form.username</source>
+                <target>Benutzername</target>
+            </trans-unit>
+            <trans-unit id="form.email">
+                <source>form.email</source>
+                <target>E-Mail Adresse</target>
+            </trans-unit>
+            <trans-unit id="form.password">
+                <source>form.password</source>
+                <target>Passwort</target>
+            </trans-unit>
+            <trans-unit id="form.password_confirmation">
+                <source>form.password_confirmation</source>
+                <target>Passwort bestätigen</target>
+            </trans-unit>
+            <trans-unit id="title_user_edit_password">
+                <source>title_user_edit_password</source>
+                <target>Passwort ändern</target>
+            </trans-unit>
+            <trans-unit id="title_user_resetting">
+                <source>title_user_resetting</source>
+                <target>Password vergessen</target>
+            </trans-unit>
+            <trans-unit id="title_user_resetting_reset">
+                <source>title_user_resetting_reset</source>
+                <target>Password zurücksetzen</target>
             </trans-unit>
         </body>
     </file>

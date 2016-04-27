@@ -2,6 +2,10 @@
 <xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
     <file source-language="en" datatype="plaintext" original="" >
         <body>
+            <trans-unit id="title_user_registration">
+                <source>title_user_registration</source>
+                <target>Register</target>
+            </trans-unit>
             <trans-unit id="title_user_account">
                 <source>title_user_account</source>
                 <target>User Profile</target>
@@ -65,6 +69,10 @@
             <trans-unit id="user_block_logout">
                 <source>user_block_logout</source>
                 <target>Logout</target>
+            </trans-unit>
+            <trans-unit id="user_block_profile">
+                <source>user_block_profile</source>
+                <target>Profile</target>
             </trans-unit>
             <trans-unit id="user_form.label_username">
                 <source>form.label_username</source>
@@ -134,6 +142,10 @@
                 <source>filter.label_id</source>
                 <target>ID</target>
             </trans-unit>
+            <trans-unit id="filter.label_enabled">
+                <source>filter.label_enabled</source>
+                <target>Active</target>
+            </trans-unit>
             <trans-unit id="filter.label_groups">
                 <source>filter.label_groups</source>
                 <target>Groups</target>
@@ -153,6 +165,10 @@
             <trans-unit id="filter.label_lastname">
                 <source>filter.label_lastname</source>
                 <target>Lastname</target>
+            </trans-unit>
+            <trans-unit id="filter.label_roles">
+                <source>filter.label_roles</source>
+                <target>Roles</target>
             </trans-unit>
             <trans-unit id="list.label_username">
                 <source>list.label_username</source>
@@ -497,6 +513,46 @@
             <trans-unit id="sonata_user_profile_breadcrumb_edit">
                 <source>sonata_user_profile_breadcrumb_edit</source>
                 <target>Edit profile</target>
+            </trans-unit>
+            <trans-unit id="sonata_user_already_authenticated">
+                <source>sonata_user_already_authenticated</source>
+                <target>You are already logged in</target>
+            </trans-unit>
+            <trans-unit id="security.login.username">
+                <source>security.login.username</source>
+                <target>Username</target>
+            </trans-unit>
+            <trans-unit id="security.login.password">
+                <source>security.login.password</source>
+                <target>Password</target>
+            </trans-unit>
+            <trans-unit id="form.username">
+                <source>form.username</source>
+                <target>Username</target>
+            </trans-unit>
+            <trans-unit id="form.email">
+                <source>form.email</source>
+                <target>Email</target>
+            </trans-unit>
+            <trans-unit id="form.password">
+                <source>form.password</source>
+                <target>Password</target>
+            </trans-unit>
+            <trans-unit id="form.password_confirmation">
+                <source>form.password_confirmation</source>
+                <target>Verification</target>
+            </trans-unit>
+            <trans-unit id="title_user_edit_password">
+                <source>title_user_edit_password</source>
+                <target>Change password</target>
+            </trans-unit>
+            <trans-unit id="title_user_resetting">
+                <source>title_user_resetting</source>
+                <target>Request password</target>
+            </trans-unit>
+            <trans-unit id="title_user_resetting_reset">
+                <source>title_user_resetting_reset</source>
+                <target>Reset password</target>
             </trans-unit>
         </body>
     </file>

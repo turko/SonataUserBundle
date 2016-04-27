@@ -11,12 +11,15 @@
 
 namespace Sonata\UserBundle\GoogleAuthenticator;
 
-use Symfony\Component\Security\Http\Event\InteractiveLoginEvent;
-use Symfony\Component\Security\Core\Authentication\Token\UsernamePasswordToken;
 use Sonata\UserBundle\Model\UserInterface;
+use Symfony\Component\Security\Core\Authentication\Token\UsernamePasswordToken;
+use Symfony\Component\Security\Http\Event\InteractiveLoginEvent;
 
 class InteractiveLoginListener
 {
+    /**
+     * @var Helper
+     */
     protected $helper;
 
     /**
@@ -28,8 +31,7 @@ class InteractiveLoginListener
     }
 
     /**
-     * @param \Symfony\Component\Security\Http\Event\InteractiveLoginEvent $event
-     * @return
+     * @param InteractiveLoginEvent $event
      */
     public function onSecurityInteractiveLogin(InteractiveLoginEvent $event)
     {

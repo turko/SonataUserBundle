@@ -11,38 +11,51 @@
 
 namespace Sonata\UserBundle\GoogleAuthenticator;
 
-use Symfony\Component\Security\Core\Authentication\Token\UsernamePasswordToken;
-use Symfony\Component\HttpKernel\Event\GetResponseEvent;
-use Symfony\Component\Security\Core\SecurityContextInterface;
 use Symfony\Bundle\FrameworkBundle\Templating\EngineInterface;
+use Symfony\Component\HttpKernel\Event\GetResponseEvent;
+use Symfony\Component\HttpKernel\HttpKernel;
+use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
+use Symfony\Component\Security\Core\Authentication\Token\UsernamePasswordToken;
 
 class RequestListener
 {
+    /**
+     * @var Helper
+     */
     protected $helper;
 
-    protected $securityContext;
+    /**
+     * @var TokenStorageInterface
+     */
+    protected $tokenStorage;
 
+    /**
+     * @var EngineInterface
+     */
     protected $templating;
 
     /**
-     * @param Helper                                                     $helper
-     * @param \Symfony\Component\Security\Core\SecurityContextInterface  $securityContext
-     * @param \Symfony\Bundle\FrameworkBundle\Templating\EngineInterface $templating
+     * @param Helper                   $helper
+     * @param SecurityContextInterface $tokenStorage
+     * @param EngineInterface          $templating
      */
-    public function __construct(Helper $helper, SecurityContextInterface $securityContext, EngineInterface $templating)
+    public function __construct(Helper $helper, TokenStorageInterface $tokenStorage, EngineInterface $templating)
     {
         $this->helper = $helper;
-        $this->securityContext = $securityContext;
+        $this->tokenStorage = $tokenStorage;
         $this->templating = $templating;
     }
 
     /**
-     * @param \Symfony\Component\HttpKernel\Event\GetResponseEvent $event
-     * @return
+     * @param GetResponseEvent $event
      */
     public function onCoreRequest(GetResponseEvent $event)
     {
-        $token = $this->securityContext->getToken();
+        if (HttpKernel::MASTER_REQUEST != $event->getRequestType()) {
+            return;
+        }
+
+        $token = $this->tokenStorage->getToken();
 
         if (!$token) {
             return;
@@ -52,10 +65,10 @@ class RequestListener
             return;
         }
 
-        $key     = $this->helper->getSessionKey($this->securityContext->getToken());
+        $key     = $this->helper->getSessionKey($this->tokenStorage->getToken());
         $request = $event->getRequest();
         $session = $event->getRequest()->getSession();
-        $user    = $this->securityContext->getToken()->getUser();
+        $user    = $this->tokenStorage->getToken()->getUser();
 
         if (!$session->has($key)) {
             return;
@@ -77,7 +90,7 @@ class RequestListener
         }
 
         $event->setResponse($this->templating->renderResponse('SonataUserBundle:Admin:Security/two_step_form.html.twig', array(
-            'state' => $state
+            'state' => $state,
          )));
     }
 }

@@ -2,6 +2,10 @@
 <xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
     <file source-language="en" datatype="plaintext" original="SonataUserBundle.en.xliff">
         <body>
+            <trans-unit id="title_user_registration">
+                <source>title_user_registration</source>
+                <target>title_user_registration</target>
+            </trans-unit>
             <trans-unit id="title_user_account">
                 <source>title_user_account</source>
                 <target>User Profile</target>
@@ -57,6 +61,10 @@
             <trans-unit id="user_block_logout">
                 <source>user_block_logout</source>
                 <target>登出</target>
+            </trans-unit>
+            <trans-unit id="user_block_profile">
+                <source>user_block_profile</source>
+                <target>user_block_profile</target>
             </trans-unit>
             <trans-unit id="sonata_user">
                 <source>sonata_user</source>
@@ -309,6 +317,46 @@
             <trans-unit id="sonata_user_profile_breadcrumb_edit">
                 <source>sonata_user_profile_breadcrumb_edit</source>
                 <target>sonata_user_profile_breadcrumb_edit</target>
+            </trans-unit>
+            <trans-unit id="sonata_user_already_authenticated">
+                <source>sonata_user_already_authenticated</source>
+                <target>You are already logged in</target>
+            </trans-unit>
+            <trans-unit id="security.login.username">
+                <source>security.login.username</source>
+                <target>security.login.username</target>
+            </trans-unit>
+            <trans-unit id="security.login.password">
+                <source>security.login.password</source>
+                <target>security.login.password</target>
+            </trans-unit>
+            <trans-unit id="form.username">
+                <source>form.username</source>
+                <target>form.username</target>
+            </trans-unit>
+            <trans-unit id="form.email">
+                <source>form.email</source>
+                <target>form.email</target>
+            </trans-unit>
+            <trans-unit id="form.password">
+                <source>form.password</source>
+                <target>form.password</target>
+            </trans-unit>
+            <trans-unit id="form.password_confirmation">
+                <source>form.password_confirmation</source>
+                <target>form.password_erification</target>
+            </trans-unit>
+            <trans-unit id="title_user_edit_password">
+                <source>title_user_edit_password</source>
+                <target>title_user_edit_password</target>
+            </trans-unit>
+            <trans-unit id="title_user_resetting">
+                <source>title_user_resetting</source>
+                <target>title_user_resetting</target>
+            </trans-unit>
+            <trans-unit id="title_user_resetting_reset">
+                <source>title_user_resetting_reset</source>
+                <target>title_user_resetting_reset</target>
             </trans-unit>
         </body>
     </file>

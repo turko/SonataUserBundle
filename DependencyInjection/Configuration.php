@@ -1,4 +1,5 @@
 <?php
+
 /*
  * This file is part of the Sonata package.
  *
@@ -14,14 +15,14 @@ use Symfony\Component\Config\Definition\Builder\TreeBuilder;
 use Symfony\Component\Config\Definition\ConfigurationInterface;
 
 /**
- * This is the class that validates and merges configuration from your app/config files
+ * This is the class that validates and merges configuration from your app/config files.
  *
  * To learn more see {@link http://symfony.com/doc/current/cookbook/bundles/extension.html#cookbook-bundles-extension-config-class}
  */
 class Configuration implements ConfigurationInterface
 {
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      */
     public function getConfigTreeBuilder()
     {
@@ -32,7 +33,7 @@ class Configuration implements ConfigurationInterface
 
         $rootNode
             ->children()
-                ->booleanNode('security_acl')->defaultValue(false)->end()
+                ->booleanNode('security_acl')->defaultFalse()->end()
                 ->arrayNode('table')
                     ->addDefaultsIfNotSet()
                     ->children()
@@ -42,7 +43,7 @@ class Configuration implements ConfigurationInterface
                 ->scalarNode('impersonating_route')->end()
                 ->arrayNode('impersonating')
                     ->children()
-                        ->scalarNode('route')->defaultValue(false)->end()
+                        ->scalarNode('route')->defaultFalse()->end()
                         ->arrayNode('parameters')
                             ->useAttributeAsKey('id')
                             ->prototype('scalar')->end()
@@ -53,7 +54,7 @@ class Configuration implements ConfigurationInterface
                     ->addDefaultsIfNotSet()
                     ->children()
                         ->scalarNode('server')->cannotBeEmpty()->end()
-                        ->scalarNode('enabled')->defaultValue(false)->end()
+                        ->scalarNode('enabled')->defaultFalse()->end()
                     ->end()
                 ->end()
                 ->scalarNode('manager_type')
@@ -96,6 +97,7 @@ class Configuration implements ConfigurationInterface
                     ->addDefaultsIfNotSet()
                     ->canBeUnset()
                     ->children()
+                        ->scalarNode('default_avatar')->defaultValue('bundles/sonatauser/default_avatar.png')->end()
                         ->arrayNode('dashboard')
                             ->addDefaultsIfNotSet()
                             ->fixXmlConfig('group')
@@ -122,7 +124,7 @@ class Configuration implements ConfigurationInterface
                                 ->end()
                             ->end()
                             ->arrayNode('blocks')
-                                ->defaultValue(array(array('position' => 'left', 'settings' => array('content' => "<h2>Welcome!</h2> This is a sample user profile dashboard, feel free to override it in the configuration!"), 'type' => 'sonata.block.service.text')))
+                                ->defaultValue(array(array('position' => 'left', 'settings' => array('content' => '<h2>Welcome!</h2> This is a sample user profile dashboard, feel free to override it in the configuration!'), 'type' => 'sonata.block.service.text')))
                                 ->prototype('array')
                                     ->fixXmlConfig('setting')
                                         ->children()
@@ -168,6 +170,18 @@ class Configuration implements ConfigurationInterface
                         ->arrayNode('register')
                             ->addDefaultsIfNotSet()
                             ->children()
+                                ->arrayNode('form')
+                                    ->addDefaultsIfNotSet()
+                                    ->children()
+                                        ->scalarNode('type')->defaultValue('sonata_user_registration')->end()
+                                        ->scalarNode('handler')->defaultValue('sonata.user.registration.form.handler.default')->end()
+                                        ->scalarNode('name')->defaultValue('sonata_user_registration_form')->cannotBeEmpty()->end()
+                                        ->arrayNode('validation_groups')
+                                            ->prototype('scalar')->end()
+                                            ->defaultValue(array('Registration', 'Default'))
+                                        ->end()
+                                    ->end()
+                                ->end()
                                 ->arrayNode('confirm')
                                     ->addDefaultsIfNotSet()
                                     ->children()
@@ -194,7 +208,7 @@ class Configuration implements ConfigurationInterface
     }
 
     /**
-     * Returns default values for profile menu (to avoid BC Break)
+     * Returns default values for profile menu (to avoid BC Break).
      *
      * @return array
      */
@@ -202,16 +216,16 @@ class Configuration implements ConfigurationInterface
     {
         return array(
             array(
-                'route'  => 'sonata_user_profile_edit',
-                'label'  => 'link_edit_profile',
-                'domain' => 'SonataUserBundle',
-                'route_parameters' => array()
+                'route'            => 'sonata_user_profile_edit',
+                'label'            => 'link_edit_profile',
+                'domain'           => 'SonataUserBundle',
+                'route_parameters' => array(),
             ),
             array(
-                'route'  => 'sonata_user_profile_edit_authentication',
-                'label'  => 'link_edit_authentication',
-                'domain' => 'SonataUserBundle',
-                'route_parameters' => array()
+                'route'            => 'sonata_user_profile_edit_authentication',
+                'label'            => 'link_edit_authentication',
+                'domain'           => 'SonataUserBundle',
+                'route_parameters' => array(),
             ),
         );
     }
